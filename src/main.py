@@ -2,7 +2,10 @@ import tkinter as tk
 from urllib.request import urlopen
 
 
-def comprobar_web():
+def comprobar_web(entrada_url, etiqueta_resultado):
+    """
+    Comprueba si una URL es accesible y actualiza la etiqueta de resultado."""
+
     url = entrada_url.get().strip()
 
     if not url:
@@ -21,8 +24,9 @@ def comprobar_web():
 
 
 def main():
-    global entrada_url, etiqueta_resultado
-
+    """
+    Configura la interfaz gráfica y maneja la interacción del usuario.
+    """
     ventana = tk.Tk()
     ventana.title("Comprobador de Conectividad Web")
     ventana.geometry("400x200")
@@ -34,10 +38,10 @@ def main():
     entrada_url = tk.Entry(ventana, width=50)
     entrada_url.pack()
 
-    tk.Button(ventana, text="Comprobar", command=comprobar_web).pack(pady=10)
-
     etiqueta_resultado = tk.Label(ventana, text="")
     etiqueta_resultado.pack(pady=15)
+
+    tk.Button(ventana, text="Comprobar", command=lambda: comprobar_web(entrada_url, etiqueta_resultado)).pack(pady=10)
 
     ventana.mainloop()
 
