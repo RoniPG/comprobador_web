@@ -3,7 +3,13 @@ from urllib.request import urlopen
 
 
 def comprobar_web():
-    url = entrada_url.get()
+    url = entrada_url.get().strip()
+
+    if not url:
+        etiqueta_resultado.config(text="Introduce una URL")
+        return
+    if not url.startswith(("http://", "https://")):
+        url = "https://" + url
     try:
         response = urlopen(url=url)
         if response.getcode() == 200:
