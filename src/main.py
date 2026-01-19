@@ -19,11 +19,11 @@ def comprobar_web(entrada_url, etiqueta_resultado, btn):
     try:
         response = urlopen(url=url, timeout=5)
         if response.getcode() == 200:
-            etiqueta_resultado.config(text=" La web está disponible")
+            etiqueta_resultado.config(text=" La web está disponible", fg="green")
         else:
-            etiqueta_resultado.config(text=" La web no está disponible")
+            etiqueta_resultado.config(text=" La web no está disponible", fg="red")
     except:
-        etiqueta_resultado.config(text=" Tiempo de espera agotado")
+        etiqueta_resultado.config(text=" Tiempo de espera agotado", fg="orange")
     finally:
         btn.config(state="normal")
 
